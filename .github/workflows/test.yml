@@ -20,13 +20,13 @@ jobs:
         run: echo "$COMMITS"
       - name: commit messages
         env:
-          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message).slice(-1) }}
+          COMMIT_MESSAGES: ${{ github.event.commits.*.message }}
         run: echo "$COMMIT_MESSAGES"
       - name: contains test
         env:
-          CONTAINS_TEST: ${{ contains(toJson(github.event.commits.*.message)[0], 'Test' ) }}
+          CONTAINS_TEST: ${{ contains(toJson(github.event.commits.*.message), 'Test' ) }}
         run: echo "$CONTAINS_TEST"
       - name: contains skip
         env:
-          CONTAINS_SKIP: ${{ contains(toJson(github.event.commits.*.message)[0], 'Skip' ) }}
+          CONTAINS_SKIP: ${{ contains(toJson(github.event.commits.*.message), 'Skip' ) }}
         run: echo "$CONTAINS_SKIP"
