@@ -26,6 +26,10 @@ jobs:
         env:
           CONTAINS_TEST: ${{ contains(toJson(github.event.commits.*.message), 'Test' ) }}
         run: echo "$CONTAINS_TEST"
+      - name: contains yes
+        env:
+          CONTAINS_YES: ${{ contains(toJson(github.event.commits.*.message), 'Yes' ) }}
+        run: echo "$CONTAINS_YES"
       - name: contains skip
         env:
           CONTAINS_SKIP: ${{ contains(toJson(github.event.commits.*.message), 'Skip' ) }}
