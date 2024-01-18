@@ -1,9 +1,9 @@
 name: Health Check
 
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    #Runs "At minute 10 past every hour.""
+    - cron: '10 */1 * * *'
 
 jobs:
   url_health_check:
