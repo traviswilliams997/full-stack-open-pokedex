@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - master
-      #change back to master
       # note that your "main" branch might be called main instead of master
   pull_request:
-    branches: [ma] #change back to master
+    branches: [master]
 
     types: [opened, synchronize]
 
