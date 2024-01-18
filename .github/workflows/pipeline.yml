@@ -3,7 +3,7 @@ name: Deployment pipeline
 on:
   push:
     branches:
-      - m
+      - master
       #change back to master
       # note that your "main" branch might be called main instead of master
   pull_request:
@@ -37,12 +37,12 @@ jobs:
           wait-on: http://localhost:5000/
           wait-on-timeout: 60
       - name: Deploy app
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), 'Skip' ) }}
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   tag_release:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), 'Skip' )}}
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
