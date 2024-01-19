@@ -1,17 +1,17 @@
-name: Health Check
-
-on:
-  schedule:
-    #Runs "At minute 10 past every hour.""
-    - cron: '10 */1 * * *'
-
-jobs:
-  url_health_check:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Check the deployed service URL
-        uses: jtalk/url-health-check-action@v3
-        with:
-          url: https://full-stack-pokedex-779.fly.dev/
-          max-attempts: 3
-          retry-delay: 5s
+#name: Health Check
+#
+#on:
+#  schedule:
+#    #Runs "At minute 10 past every hour.""
+#    - cron: '10 */1 * * *'
+#
+#jobs:
+#  url_health_check:
+#    runs-on: ubuntu-20.04
+#    steps:
+#      - name: Check the deployed service URL
+#        uses: jtalk/url-health-check-action@v3
+#        with:
+#          url: https://full-stack-pokedex-779.fly.dev/
+#          max-attempts: 3
+#          retry-delay: 5s
